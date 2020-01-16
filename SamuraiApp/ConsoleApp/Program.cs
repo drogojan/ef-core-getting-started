@@ -15,6 +15,7 @@ namespace ConsoleApp
             GetSamurais("Before Add:");
             AddSamurai();
             GetSamurais("After Add:");
+            InsertMultipleSamurais();
             Console.Write("Press any key...");
             Console.ReadKey();
         }
@@ -23,6 +24,14 @@ namespace ConsoleApp
         {
             var samurai = new Samurai {Name = "Sampson"};
             context.Samurais.Add(samurai);
+            context.SaveChanges();
+        }
+        
+        private static void InsertMultipleSamurais()
+        {
+            var samurai = new Samurai {Name = "Sampson"};
+            var samurai2 = new Samurai {Name = "Tasha"};
+            context.Samurais.AddRange(samurai, samurai2);
             context.SaveChanges();
         }
 
